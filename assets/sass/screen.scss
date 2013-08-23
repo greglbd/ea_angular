@@ -1,0 +1,51 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+
+@import "compass/reset";
+@import "partials/variables";
+@import "partials/mixins";
+
+/* sprite generation */
+@import "sprites/general/*.png";
+@include all-general-sprites;
+
+@import "compass/css3/images";
+
+.nav-left {
+  width: 152px;
+  height: 33px;
+  float: left;
+}
+
+.nav-right {
+  width: 16px;
+  height: 33px;
+  float:left;
+}
+
+li {
+  float: left;
+}
+
+/* bootstrap overrides */
+.btn-small {
+  margin-left: 12%;
+  margin-top: 2%;
+  width: 73%;
+  &.nav-btn {
+    @include background-image(radial-gradient(45px 8px, #d4b765 10px, #652609 70px));
+    border-color: #b3a5a2;
+    @include font-large(bold, italic);
+    color: #652609;
+    min-height: 20px;
+    line-height: 20px;
+    &:hover {
+      opacity: 0.75;
+      background-position: 0 0px;
+    }
+  }
+}
+
+ 
