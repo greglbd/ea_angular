@@ -23,6 +23,10 @@ body, p, span, div {
 .section-title {
   @include font-large(bold);
   color: $header-copy;
+  & > span {
+    font-style: italic;
+    color: $header-copy;
+  }
 }
 .nav-item {
   height: 33px;
@@ -67,7 +71,7 @@ li {
 
 .textured {
   @include image-background('../images/content-texture.jpg', top, left, repeat-x);
-  background-color: #000;
+  background-color: #121214;
   height: 365px;
 }
 
@@ -85,6 +89,13 @@ li {
   }
 }
 
+.nav-listitem {
+  max-width: 33%;
+}
+
+.footer-container {
+  padding-top: 0px;
+}
 .gutter {
   & > .gutter-top_corner {
     width: 9px;
@@ -93,7 +104,8 @@ li {
   
   &.gutter-left {
     
-  float:left;
+    float:left;
+    margin-left: -20px;
     & > .gutter-top_corner,  & > .gutter-repeat {
      margin-left: 11px;
     }
@@ -117,7 +129,7 @@ li {
   &.gutter-base {
     background-size: 100%;
     height: 8px;
-    width: 964px;
+    width: 100%;
     position: relative;
     margin: auto;
     @include single-box-shadow(rgba(0, 0, 0, 0.8), 0, 0, 15px, 4px);
@@ -176,35 +188,120 @@ footer {
   @include box-shadow(rgba(black, 0.4) 0 0 35px 25px, rgba(white, 0.75) 7px 0 7px -6px inset);
 }
 
+.tab-content {
+  position: relative;
+}
+
+.repo-listitems {
+  height: 220px;
+  overflow: auto;
+  width: 100%;
+  & > .repo-listitem {
+    border-bottom: 1px solid rgba(gray, 0.5);
+    color: gray;
+    @include font-regular(normal);
+    width: 100%;
+    float: left;
+    min-height: 28px;
+    line-height: 28px;
+    & > .repo-listitem_left {
+      float: left;
+      width: 75%;
+    }
+    & > .repo-listitem_right {
+      float: right;
+      width: 25%;
+      text-align: right;
+    }
+  }
+}
+
+//ensure it's hidden until load
+[ng\:cloak], [ng-cloak], .ng-cloak {
+  display: none !important;
+}
 /* bootstrap overrides */
+form {
+  & > .control-group {
+    margin-top: 18px;
+    margin-bottom: 12px;
+  }
+  
+   & > .control-group ~ .control-group {
+    margin-top: 0px;
+  }
+  
+  & > .control-group.btn-group {
+    width: 78%;
+    margin-left: 20%;
+  }
+
+}
+
+input {
+  
+  border-color: $input-border-color;
+  &.input-xlarge-override.input-xlarge {
+    @include font-regular(normal);
+    @include border-radius(1px);
+    width: 75%;
+    margin-bottom: 0px;
+  }
+}
+
 .btn-small {
   margin-left: 12%;
   margin-top: 2%;
   width: 73%;
-  &.nav-btn {
-    //@include background-image(radial-gradient(45px 8px, #d4b765 10px, #652609 70px));
+    
+   
+  &.nav-btn, &.form-btn {   
     @include background-image(linear-gradient(top, #d4b765 75%, rgba(135, 49, 22, .5), #d4b765));
- 
-    border-color: #b3a5a2;
     @include font-large(bold, italic);
+    @include single-box-shadow(rgba(135, 49, 22, 1), 0, 0, 12px, 6px, inset);
+    min-height: 23px;
+    line-height: 23px;
     color: $btn-copy;
-    min-height: 22px;
-    line-height: 22px;
     &:hover {
       opacity: 0.75;
       background-position: 0 0px;
     }
   }
+  
+  &.nav-btn {
+    border-color: #b3a5a2;
+  }
+  &.form-btn {
+    margin-top: 0px;
+    float: right;
+    @include border-radius(6px);
+    @include single-box-shadow(rgba(135, 49, 22, 1), 0, 0, 6px, 3px, inset);
+    border-color: rgba(135, 49, 22, 1);
+    @include font-large(bold);
+    text-transform: uppercase;
+    width: 88px;
+  }
 }
 
+ 
+  
+ 
 .btn.btn-small.nav-btn {
-  @include single-box-shadow(rgba(135, 49, 22, 1), 0, 0, 12px, 6px, inset);
 }
 
 .padded {
   padding: 48px 36px;
   & > p {
     @include font-regular(normal);
+  }
+}
+
+.controls {
+  .control-label {
+    @include font-regular(normal);
+    float: left;
+    line-height: 30px;
+    width: 20%;
   }
 }
 
