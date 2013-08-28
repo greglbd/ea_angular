@@ -71,7 +71,7 @@
     }  
     
     $scope.displayDetails = function(id, created) {
-      alert("REPO ID: " + id + "\n CREATED AT: " + created);
+      alert("REPO ID: " + id + "\nCREATED AT: " + created);
     }
 
         
