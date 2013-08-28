@@ -12,21 +12,168 @@
 @include all-general-sprites;
 
 @import "compass/css3/images";
+@import "compass/css3/transform";
+@import "compass/css3/box-shadow";
 
-.nav-left {
-  width: 152px;
-  height: 33px;
-  float: left;
+
+body, p, span, div {
+  color: $body-copy;
 }
 
-.nav-right {
-  width: 16px;
+.section-title {
+  @include font-large(bold);
+  color: $header-copy;
+}
+.nav-item {
   height: 33px;
-  float:left;
+  float: left;
+  &.nav-item-left {
+    width: 152px;
+  }
+  &.nav-item-right {
+    width: 18px;
+  }
 }
 
 li {
   float: left;
+}
+
+.container-wrapper {
+  background-color: #000;
+  min-width: 1000;
+  height: 100%;
+  min-height: 800px;
+  @include image-background('../images/background.jpg');
+}
+
+.content-wrapper {
+  overflow: hidden;
+}
+
+.logo {
+  min-width: 800px;
+  min-height: 600px;
+  @include image-background('../images/logo.png');
+  background-repeat: no-repeat;
+  overflow: visible;
+  position: absolute;
+  z-index: 0;
+}
+.container {
+  padding-top: 163px;
+  position: relative;
+}
+
+.textured {
+  @include image-background('../images/content-texture.jpg', top, left, repeat-x);
+  background-color: #000;
+  height: 365px;
+}
+
+.header-texture {
+  @include image-background('../images/header-texture.jpg', top, left, repeat-x);
+  background-color: #000;
+  height: 12px;
+  @include border-top-left-radius(10px);
+  @include border-top-right-radius(10px);
+}
+
+.navigation {
+  & > .span11 {
+    margin-left: 30px;
+  }
+}
+
+.gutter {
+  & > .gutter-top_corner {
+    width: 9px;
+    height: 36px;
+  }
+  
+  &.gutter-left {
+    
+  float:left;
+    & > .gutter-top_corner,  & > .gutter-repeat {
+     margin-left: 11px;
+    }
+  }
+  
+  &.gutter-right {
+    float: right;
+    /* hate the way I've done this */
+    margin-right: -9px;
+    margin-top: -365px;
+    & > .gutter-top_corner,  & > .gutter-repeat {
+       @include scale( -1, 1 );
+    }
+  }
+  
+  & > .gutter-repeat {
+    height: 329px;
+    @include image-background('../images/gutter-repeat.png', top, left, repeat);
+  }
+  
+  &.gutter-base {
+    background-size: 100%;
+    height: 8px;
+    width: 964px;
+    position: relative;
+    margin: auto;
+    @include single-box-shadow(rgba(0, 0, 0, 0.8), 0, 0, 15px, 4px);
+    border-bottom: 2px solid #000;
+    
+    &> .gutter-base-detail {
+      
+      @include image-background('../images/header-texture.jpg', center, center, repeat);
+      width: 100%;
+      height: 100%;
+      position: relative;
+      
+      & > .gutter-shadow_internal {
+        
+        position: absolute;
+        height: 100%;
+        width: 40px;
+        z-index: 1;
+        &.shadow-left { 
+          @include background-image(linear-gradient(left, #000000, rgba(0, 0, 0, 0)));
+          left: 0px;
+        }
+        &.shadow-right {
+          @include background-image(linear-gradient(right, #000000, rgba(0, 0, 0, 0)));
+          right: 0px;
+        }
+      }
+      
+      
+      & > hr {
+        margin: 0px;
+        position: absolute;
+        z-index: 0;
+        padding-top: 1px;
+        width: 100%;
+        border: 0;
+        height: 0;
+        border-top: 1px solid rgba(0, 0, 0, 0.1);
+        border-bottom: 2px solid rgba(0, 0, 0, 0.3);
+      }
+    }
+    
+  }
+  
+}
+
+footer {
+  overflow-y: hidden;
+}
+
+.drop-shadow {
+  @include single-box-shadow(rgba(0, 0, 0, 0.8), 0, 20px, 60px, 30px);
+}
+
+.drop-shadow-multiple {
+  @include box-shadow(rgba(black, 0.4) 0 0 35px 25px, rgba(white, 0.75) 7px 0 7px -6px inset);
 }
 
 /* bootstrap overrides */
@@ -35,16 +182,29 @@ li {
   margin-top: 2%;
   width: 73%;
   &.nav-btn {
-    @include background-image(radial-gradient(45px 8px, #d4b765 10px, #652609 70px));
+    //@include background-image(radial-gradient(45px 8px, #d4b765 10px, #652609 70px));
+    @include background-image(linear-gradient(top, #d4b765 75%, rgba(135, 49, 22, .5), #d4b765));
+ 
     border-color: #b3a5a2;
     @include font-large(bold, italic);
-    color: #652609;
-    min-height: 20px;
-    line-height: 20px;
+    color: $btn-copy;
+    min-height: 22px;
+    line-height: 22px;
     &:hover {
       opacity: 0.75;
       background-position: 0 0px;
     }
+  }
+}
+
+.btn.btn-small.nav-btn {
+  @include single-box-shadow(rgba(135, 49, 22, 1), 0, 0, 12px, 6px, inset);
+}
+
+.padded {
+  padding: 48px 36px;
+  & > p {
+    @include font-regular(normal);
   }
 }
 

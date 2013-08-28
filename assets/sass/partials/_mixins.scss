@@ -7,19 +7,11 @@
 }
 
 @mixin font-regular($weight, $style: $default_font_style) {
-  font: $style $weight $font-normal $font-family-regular;
+  font: $style $weight $font-regular $font-family-regular;
 }
 
 @mixin font-small($weight, $style: $default_font_style) {
   font: $style $weight $font-small $font-family-regular; 
-}
-
-@mixin font-weight-medium {
-  font-weight: 400;
-}
-
-@mixin font-weight-heavy {
-  font-weight: 500;
 }
 
 @mixin heading {
@@ -37,4 +29,12 @@
   & > a, & > a:hover {
     text-decoration: none;
   }
+}
+
+@mixin image-background($image, $vertical: top, $horizontal: center, $repeat: no-repeat)
+{
+  
+  background-image: url($image);
+  background-repeat:  $repeat;
+  background-position: $vertical $horizontal;
 }

@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" ng-app>
+<html lang="en">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -7,26 +7,153 @@
     <meta name="viewport" content="width=device-width">
     <title>My HTML File</title>
     <link rel="stylesheet" href="assets/stylesheets/screen.css">
-    <link rel="stylesheet" href="assets/stylesheets/bootstrap.min.css">
-    <script src="assets/js/angular.min.js"></script>
-    <script src="assets/js/bootstrap.min.js"></script>
-    <script src="assets/js/controllers.js"></script>
+    <link rel="stylesheet" href="assets/stylesheets/bootstrap.min.css">  
+
+    
   </head>
-  <body ng-controller="NavListCtrl">
-  
-  <header>
-  </header>
-  <div class="container">
-    <ul class="unstyled">
-      <li ng-repeat="nav in nav">
-        <div class="nav-left general-nav-left">
-          <a href="{{nav.link}}" class="btn btn-small nav-btn">{{nav.name}}</a>  
+  <body ng-app="app" >
+    <div class="container-wrapper">
+      <div class="content-wrapper">
+        <header>
+        <div class="row">
+          <div class="span12">
+            
+            <div class="logo"></div>
+          </div>
         </div>
-        <div class="nav-right general-nav-right"></div>
-      </li>
-    </ul>
-  </div>
-  <footer></footer>
-   
+        </header>
+        <div class="container">
+          <section>
+            <div class="row navigation">
+              <div ng-controller="NavListCtrl" class="span11">
+                <ul class="unstyled">
+                  <li ng-repeat="nav in nav">
+                    <div class="nav-item nav-item-left general-nav-left">
+                      <a href="{{nav.link}}" data-toggle="tab" class="drop-shadow-inset btn btn-small nav-btn">{{nav.name}}</a>  
+                    </div>
+                    <div class="nav-item nav-item-right general-nav-right"></div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="row">
+              <div class="span12 header-texture"></div>
+            </div>
+            <div class="row">
+              <div class="gutter gutter-left">
+                <div class="general-page-gutter-top gutter-top_corner"></div>
+                <div class="gutter-repeat drop-shadow"></div>
+              </div>
+              <div class="tab-content">
+                <div class="tab-pane active" id="home">
+                  <div class="row" ng-controller="AuthCtrl" >
+                    <div class="span7 textured" ng-model="success">
+                      <form  ng-hide="success" name="loginForm" class="padded form-horizontal css-form">
+                        <h2 class="section-title">SIGN IN</h2>
+                        <div class="control-group">
+                          <div class="controls">
+                            <input type="text" name="username" ng-model="username" placeholder="enter username" required /><span class="error" ng-show="loginForm.username.required">Required!</span><br>
+                          </div>
+                        </div>
+                        <div class="control-group">
+                          <div class="controls">
+                            <input type="password" name="pwd" ng-model="password" placeholder="enter password" required /><span class="error" ng-show="loginForm.pwd.required">Required!</span><br>
+                          </div>
+                        </div>
+                        <div class="control-group">
+                          <div class="controls">
+                            <button class="drop-shadow-inset btn btn-small nav-btn" ng-click="auth()">Login</button>
+                          </div>
+                        </div>
+                      </form>  
+                      <form ng-show="success" name="searchForm" class="padded form-horizontal css-form">
+                        <h2 class="section-title">SEARCH REPOSITORIES BY USERNAME</h2>
+                        <div class="control-group">
+                          <div class="controls">
+                            <label>Username</label>
+                            <input type="text" name="username" ng-model="username" placeholder="enter username" required /><span class="error" ng-show="searchForm.username.required">Required!</span><br>
+                          </div>
+                        </div>
+                        <div class="control-group">
+                          <div class="controls">
+                            <button class="drop-shadow-inset btn btn-small nav-btn" ng-click="search()">Search</button>
+                          </div>
+                        </div>
+                      </form>  
+ 
+                      
+                    </div>  
+                    <div class="span5" ng-model="success">
+                      <div ng-hide="success" class="row textured drop-shadow-multiple">
+                        <div class="padded">
+                          <h2 class="section-title">COMING SOON</h2>
+                          <p>Lorem ipsum dolor sit amet, et vix mazim legere, et eum simul sanctus mandamus. Et sed ullum reformidans, et sit nullam meliore detraxit. Cu fabulas vulputate eos, ne eum meliore euripidis.</p>
+                          <p>Facilisi deserunt eu vel, at per nulla malorum eripuit. Sit in etiam option, dolor maiorum assentior ne nam. Per dicat utamur ei, viderer corrumpit has ex. Eu dicta congue argumentum usu..</p>
+                        </div>
+                      </div>
+                      
+                      <div ng-show="success" class="row textured drop-shadow-multiple">
+                        <div class="padded">
+                          <h2 class="section-title">RESULTS</h2>
+                          <p></p>
+                          <p></p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>           
+                </div>
+                <div class="tab-pane" id="about">
+                  <div class="row">
+                    <div class="span7 textured">   
+                      <p class="padded">About section coming soon …</p>    
+                    </div>  
+                    <div class="span5">
+                      <div class="row textured drop-shadow-multiple">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="tab-pane" id="media">
+                  <div class="row">
+                    <div class="span7 textured">   
+                      <p class="padded">Media section coming soon …</p>    
+                    </div>  
+                    <div class="span5">
+                      <div class="row textured drop-shadow-multiple">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="gutter gutter-right">
+                <div class="general-page-gutter-top gutter-top_corner"></div>
+                <div class="gutter-repeat drop-shadow"></div>
+              </div>
+            </div>
+            
+          </section>
+      </div>
+      
+          
+          <footer>
+            <div class="gutter gutter-base">
+              <div class="gutter-base-detail">
+                <div class="gutter-shadow_internal shadow-left"></div>
+                <hr/>
+                <div class="gutter-shadow_internal shadow-right"></div>
+              </div>
+            </div>
+          </footer>
+      </div>
+    </div>
+  
+
+    <script src="assets/js/base64.js"></script>
+    <script src="assets/js/underscore-min.js"></script>
+    <script src="assets/js/github.js"></script>
+    <script src="assets/js/angular.min.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/app.js"></script>
   </body>
 </html>
