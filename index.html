@@ -16,12 +16,11 @@
     <div class="container-wrapper" ng-cloak>
       <div class="content-wrapper">
         <header>
-        <div class="row">
-          <div class="span12">
-            
-            <div class="logo"></div>
+          <div class="row">
+            <div class="span12">
+              <div class="logo"></div>
+            </div>
           </div>
-        </div>
         </header>
         <div class="container">
           <section>
@@ -111,9 +110,9 @@
                             <div class="row textured drop-shadow-multiple">
                               <div class="padded" ng-model="search_success">
                                 <h2 class="section-title" ng-hide="search_success">Results will appear here</h2>
-                                <h2 class="section-title" ng-show="search_success">{{search_repos.length}} repositories were found for <span>{{search_input}}</span></h2>
+                                <h2 class="section-title" ng-show="search_success">{{search_repos.length}} repositories were found for <span>{{search_name}}</span></h2>
                                 <ul class="unstyled repo-listitems">
-                                  <li ng-repeat="repo in search_repos" class="repo-listitem">
+                                  <li ng-click="displayDetails(repo.id, repo.created_at)" ng-repeat="repo in search_repos" class="repo-listitem">
                                     <div class="repo-listitem_left">
                                       {{repo.name}} 
                                     </div>

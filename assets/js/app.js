@@ -49,27 +49,32 @@
     }
     
     $scope.search = function() {
-      $scope.user.userRepos($scope.search_input, function(err, repos) {
-        
-        $scope.err = err;
-        if($scope.err != null)
-        {
-          $scope.search_success = false;
-          alert('the username is not valid');
-        }else
-        {
-          $scope.search_repos = repos;
-          $scope.search_success = true;
-          console.log($scope.search_repos);
-          $scope.$apply();
-        }
-      });
-      
-    }   
+      if($scope.search_input != $scope.search_name)
+      {
+        $scope.user.userRepos($scope.search_input, function(err, repos) {
+          
+          $scope.err = err;
+          if($scope.err != null)
+          {
+            $scope.search_success = false;
+            alert('the username is not valid');
+          }else
+          {
+            $scope.search_name = $scope.search_input;
+            $scope.search_repos = repos;
+            $scope.search_success = true;
+            console.log($scope.search_repos);
+            $scope.$apply();
+          }
+        });
+      }
+    }  
+    
+    $scope.displayDetails = function(id, created) {
+      alert("REPO ID: " + id + "\n CREATED AT: " + created);
+    }
 
         
   });
-  app.controller('SearchCtrl', function($scope) {
-      });
   
   
